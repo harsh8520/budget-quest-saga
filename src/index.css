@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;800&display=swap');
+@import "tailwindcss";
+
+:root {
+    --primary-bg: #1a1a2e;
+    --secondary-bg: #16213e;
+    --pixel-font: 'Press Start 2P', cursive;
+    --body-font: 'Inter', sans-serif;
+}
+
+body {
+    font-family: var(--body-font);
+    background-color: var(--primary-bg);
+    color: #e0e0e0;
+    overscroll-behavior: none;
+}
+
+.font-pixel {
+    font-family: var(--pixel-font);
+}
+
+.text-shadow-cyan {
+    text-shadow: 3px 3px 0px #0891b2;
+}
+
+.text-shadow-purple {
+    text-shadow: 2px 2px 0px #581c87;
+}
+
+.pixel-border {
+    border: 4px solid #4a5568;
+    box-shadow:
+        4px 4px 0 #1a202c, -4px -4px 0 #1a202c,
+        -4px 4px 0 #1a202c, 4px -4px 0 #1a202c,
+        0 0 0 4px #4a5568;
+    image-rendering: pixelated;
+}
+
+.btn-pixel {
+    font-family: var(--pixel-font);
+    border: 3px solid #2d3748;
+    box-shadow: 4px 4px 0 #2d3748;
+    transition: all 0.1s ease-in-out;
+    transform: translate(0, 0);
+}
+
+.btn-pixel:hover {
+    filter: brightness(1.1);
+}
+
+.btn-pixel:active {
+    transform: translateY(4px) translateX(4px);
+    box-shadow: 0 0 0 #2d3748;
+}
+
+.btn-pixel:disabled {
+    background-color: #4a5568 !important;
+    filter: grayscale(1);
+    cursor: not-allowed;
+    color: #a0aec0 !important;
+}
+
+.hero-bg {
+    background-image: linear-gradient(rgba(26, 26, 46, 0.8), rgba(26, 26, 46, 1)), url('https://placehold.co/1200x800/1a1a2e/16213e/png?text=...');
+    background-size: cover;
+    background-position: center;
+}
+
+.question-card {
+    border: 2px solid #4a5568;
+    transition: transform 0.2s, border-color 0.2s, background-color 0.2s;
+}
+
+.question-card:hover {
+    transform: translateY(-5px);
+    border-color: #0ea5e9;
+}
+
+.question-card.selected {
+    background-color: #0ea5e9;
+    border-color: #0ea5e9;
+    color: #1a202c;
+}
+
+.nav-item.active {
+    background-color: #4a5568;
+    color: white;
+}
+
+.xp-bar {
+    background: linear-gradient(90deg, #34d399, #6ee7b7);
+    transition: width 0.5s ease-in-out;
+}
+
+.budget-bar-inner {
+    background: linear-gradient(90deg, #60a5fa, #93c5fd);
+}
+
+.budget-bar-over {
+    background: linear-gradient(90deg, #f87171, #fca5a5);
+}
+
+.zone-progress-bar {
+    background: linear-gradient(90deg, #fde047, #facc15);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    animation: modal-pop 0.3s ease-out;
+}
+
+@keyframes modal-pop {
+    from {
+        transform: scale(0.7) translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+input, select {
+    background-color: #2d3748;
+    border: 2px solid #4a5568;
+    color: #e0e0e0;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #60a5fa;
+}
+
+.delete-btn {
+    background-color: #ef4444;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-weight: bold;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.delete-btn:hover {
+    transform: scale(1.1);
+}
+
+.boss-card.locked .boss-icon {
+    filter: brightness(0) invert(0.1);
+}
+
+.boss-card.locked .boss-info {
+    visibility: hidden;
+}
+
+.boss-card.snoozed {
+    opacity: 0.6;
+    filter: grayscale(50%);
+}
+
+.achievement.unlocked {
+    opacity: 1;
+    border-color: #facc15;
+}
+
+.achievement.locked {
+    opacity: 0.5;
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(26, 26, 46, 0.9);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    border: 3px solid #fde047;
+    z-index: 1000;
+    animation: pop-and-fade 3s ease-out forwards;
+    text-shadow: 2px 2px 0px #581c87;
+}
+
+@keyframes pop-and-fade {
+    0% {
+        transform: translateX(-50%) translateY(-50px);
+        opacity: 0;
+    }
+    15% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+    85% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-50%) translateY(50px);
+        opacity: 0;
+    }
+}

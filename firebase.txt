@@ -1,0 +1,25 @@
+npm install firebase
+
+--------------------------------------------------------
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCJrocsn29Zd_0w3D1uHi7izQEHHop0BB4",
+  authDomain: "budgetquest-saga.firebaseapp.com",
+  projectId: "budgetquest-saga",
+  storageBucket: "budgetquest-saga.firebasestorage.app",
+  messagingSenderId: "926508667195",
+  appId: "1:926508667195:web:45b8938e0d69d03cc5671e",
+  measurementId: "G-5F58437QBW"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
